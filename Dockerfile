@@ -1,0 +1,45 @@
+# Use jupyter's minimal-notebook image as a base
+FROM jupyter/minimal-notebook
+
+# Run as root user
+USER root
+
+# Remove default python kernel
+RUN jupyter kernelspec remove -f python3
+
+# Create conda environment with gospl
+ADD deps/environment.yml .
+RUN mamba env create -f environment.yml
+RUN rm environment.yml
+
+# Activate conda environment
+SHELL ["conda", "run", "-n", "gospl", "/bin/bash", "-c"]
+
+# Install python kernel
+RUN python -m ipykernel install --name python3 --display-name "gospl"
+
+# Install older version of meshplex
+RUN curl http://deb.debian.org/debian/pool/main/p/python-meshplex/python-meshplex_0.17.1.orig.tar.gz | tar xzv
+RUN cd meshplex-0.17.1 && pip install .
+RUN rm -r meshplex-0.17.1
+
+# Switch back to regular shell
+SHELL ["/bin/bash", "-c"]
+
+# Create directories for notebook
+RUN mkdir /notebook
+RUN mkdir /notebook/inputs
+VOLUME /notebook/inputs
+WORKDIR /notebook
+
+# Add erosionpasta files
+ADD deps/erosionpasta .
+
+# Set up conda runtime environment
+RUN conda init
+RUN echo 'conda activate gospl' >> ~/.bashrc
+ENV PATH=/opt/conda/envs/gospl/bin:$PATH
+
+# Run jupyter server
+EXPOSE 8888/tcp
+ENTRYPOINT ["jupyter", "notebook", "--allow-root","--ip=0.0.0.0","--NotebookApp.token=''","--NotebookApp.password=''"]
