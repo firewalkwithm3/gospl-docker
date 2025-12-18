@@ -1,0 +1,13 @@
+name: gospl
+services:
+  gospl:
+    build: .
+    image: ghcr.io/firewalkwithm3/gospl-docker:main
+    container_name: gospl
+    ports:
+      - 8888:8888
+    volumes:
+      - inputs:/notebook/inputs
+
+volumes:
+  inputs:
