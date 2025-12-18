@@ -1,4 +1,4 @@
-# 🌍 gospl Docker Container
+# [gospl](https://github.com/Geodels/gospl) Docker Container
 
 ## Notes
 - The [erosionpasta](https://github.com/hersfeldtn/erosionpasta/tree/main/gospl) Jupyter notebook is available at `/notebooks` inside the container. 
@@ -11,3 +11,4 @@
 - https://github.com/hersfeldtn/erosionpasta
 - https://github.com/Geodels/gospl
 - https://github.com/Geodels/gospl-container
+- https://packages.debian.org/trixie/python3-meshplex
