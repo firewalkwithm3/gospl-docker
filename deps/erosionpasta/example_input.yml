@@ -1,12 +1,11 @@
-name: Global test model
+name: Example Model
 
 domain:
-    npdata: ['inputs/mesh','v','c','z']
+    npdata: ['inputs/0Ma','v','c','z']
     flowdir: 5
     fast: False
     backward: False
     interp: 1
-    #rstep: 5
 
 time:
     start: 0.
@@ -15,16 +14,14 @@ time:
     dt: 10000.
 
 spl:
-    #K: 3.0e-6
     K: 3.0e-6
     d: 0.42
 
 diffusion:
-    hillslopeKa: 1 #0.02
-    hillslopeKm: 2 #0.2
-    #clinSlp: 5.e-5
+    hillslopeKa: 1
+    hillslopeKm: 2
     clinSlp: 5.e-6
-    smthS: 2.e2 #5
+    smthS: 2.e2
     smthD: 8.e5
     offset: 50.
     oFill: -3500
@@ -33,19 +30,22 @@ diffusion:
     nlK: 3.e5
     nlc: 2.
 
+# --- Optional: provide sea level curve data
 sea:
     position: 0.
-    curve: 'sealevel.csv'
+    # curve: 'sealevel.csv'
 
-#tectonic:
-  #- start: 0.
-    #end: 490000
-    #mapV: 'inputs/uplift1'
+# --- Optional: provide tectonic data
+# tectonic:
+  # - start: 0.
+    # end: 490000
+    # mapV: 'inputs/uplift1'
 
+# --- Optional: provide precipitation data
 climate:
   - start: 0.
     uniform: 1.
-    #map: ['inputs/rain','r']
+    # map: ['inputs/rain','r']
 
 output:
     dir: 'output'
