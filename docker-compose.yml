@@ -2,7 +2,7 @@ name: gospl
 services:
   gospl:
     build: .
-    image: ghcr.io/firewalkwithm3/gospl-docker:main
+    image: ghcr.io/firewalkwithm3/gospl-docker:latest
     container_name: gospl
     ports:
       - 8888:8888
