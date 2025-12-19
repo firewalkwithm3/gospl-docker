@@ -44,6 +44,9 @@ dependencies:
     - pyproj
     - triangle
     - ipykernel
+    - trame
+    - trame-vtk
+    - trame-vuetify
     - pip:
         - git+https://github.com/Geodels/isoFlex.git
         - git+https://github.com/Geodels/gospl.git
