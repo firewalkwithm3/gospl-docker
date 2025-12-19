@@ -7,6 +7,9 @@ USER root
 # Remove default python kernel
 RUN jupyter kernelspec remove -f python3
 
+# Install Jupyter extensions
+RUN pip install trame-jupyter-extension ipywidgets
+
 # Create conda environment with gospl
 ADD deps/environment.yml .
 RUN mamba env create -f environment.yml
