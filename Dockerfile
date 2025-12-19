@@ -32,7 +32,9 @@ SHELL ["/bin/bash", "-c"]
 # Create directories for notebook
 RUN mkdir /notebook
 RUN mkdir /notebook/inputs
+RUN mkdir /notebook/output
 VOLUME /notebook/inputs
+VOLUME /notebook/output
 WORKDIR /notebook
 
 # Add erosionpasta files
