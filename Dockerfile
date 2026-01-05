@@ -21,11 +21,6 @@ SHELL ["conda", "run", "-n", "gospl", "/bin/bash", "-c"]
 # Install python kernel
 RUN python -m ipykernel install --name python3 --display-name "gospl"
 
-# Install older version of meshplex
-RUN curl http://deb.debian.org/debian/pool/main/p/python-meshplex/python-meshplex_0.17.1.orig.tar.gz | tar xzv
-RUN cd meshplex-0.17.1 && pip install .
-RUN rm -r meshplex-0.17.1
-
 # Switch back to regular shell
 SHELL ["/bin/bash", "-c"]
 
@@ -33,8 +28,10 @@ SHELL ["/bin/bash", "-c"]
 RUN mkdir /notebook
 RUN mkdir /notebook/inputs
 RUN mkdir /notebook/output
+
 VOLUME /notebook/inputs
 VOLUME /notebook/output
+
 WORKDIR /notebook
 
 # Add erosionpasta files
