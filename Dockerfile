@@ -43,5 +43,6 @@ RUN echo 'conda activate gospl' >> ~/.bashrc
 ENV PATH=/opt/conda/envs/gospl/bin:$PATH
 
 # Run jupyter server
+ENV NOTEBOOK_PASSWORD=''
 EXPOSE 8888/tcp
-ENTRYPOINT ["jupyter", "notebook", "--allow-root","--ip=0.0.0.0","--NotebookApp.token=''","--NotebookApp.password=''"]
+ENTRYPOINT ["jupyter", "notebook", "--allow-root","--ip=0.0.0.0","--NotebookApp.token=''","--NotebookApp.password=${NOTEBOOK_PASSWORD}"]
