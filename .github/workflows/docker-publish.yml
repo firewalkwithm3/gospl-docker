@@ -1,4 +1,4 @@
-name: Docker
+name: Bulid docker image & publish to ghcr.io
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -9,7 +9,7 @@ on:
   # schedule:
   #   - cron: '36 7 * * *'
   push:
-    # branches: [ "main" ]
+    branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   # pull_request:
